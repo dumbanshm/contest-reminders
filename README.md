@@ -56,6 +56,12 @@ An automated bot that sends Pushbullet notifications for upcoming Codeforces con
    python3 main.py
    ```
 
+6. **Create Mac App (macOS only):**
+   ```bash
+   chmod +x setup_mac_app.sh
+   ./setup_mac_app.sh
+   ```
+
 ## 📱 Pushbullet Setup
 
 1. Create account at [pushbullet.com](https://www.pushbullet.com)
@@ -78,12 +84,15 @@ The bot sends reminders at these intervals before each contest:
 
 ```
 codeforces-reminder-bot/
-├── main.py              # Main bot logic
-├── contests.py          # Codeforces API integration
-├── push.py             # Pushbullet notifications
-├── requirements.txt    # Python dependencies
-├── .env               # API keys (create this)
-└── README.md          # This file
+├── main.py                      # Main bot logic
+├── contests.py                  # Codeforces API integration
+├── push.py                     # Pushbullet notifications
+├── requirements.txt            # Python dependencies
+├── .env                        # API keys (create this)
+├── Codeforces Reminder Bot.app # Mac app bundle
+├── setup_mac_app.sh           # Mac app setup script
+├── setup_autostart.sh         # Auto-start setup script
+└── README.md                  # This file
 ```
 
 ## 🛠️ Usage
@@ -104,6 +113,12 @@ nohup python main.py &
 nohup python3 main.py &
 ```
 
+### Mac App (Recommended)
+1. **Double-click** `Codeforces Reminder Bot.app` to start
+2. **Runs invisibly** in background
+3. **No terminal needed** - completely silent operation
+4. **Dock shortcut** - Easy access from dock
+
 ### Stop the Bot
 Press `Ctrl+C` or kill the process
 
@@ -111,6 +126,21 @@ Press `Ctrl+C` or kill the process
 ```bash
 # When you're done working on the project:
 deactivate
+```
+
+### Mac App Management
+```bash
+# Check if bot is running
+ps aux | grep "Python main.py"
+
+# View bot logs
+tail -f /tmp/codeforces-bot.log
+
+# Stop all bot instances
+pkill -f "Python main.py"
+
+# Stop specific instance (replace PID with actual process ID)
+kill <PID>
 ```
 
 ## 📊 Example Notifications
